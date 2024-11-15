@@ -1,0 +1,44 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Health Assessment</title>
+        <link rel="stylesheet" href="style.css">
+
+        <script>
+            function openHeart(){
+                window.open("\\heart\\heart_page1.html");
+            }
+            function openLiver(){
+                window.open("\\liver\\liver_p1.html");
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Health Assessment Portal</h1>
+            <p>Select a category and check your symptoms</p>
+        </div>
+
+        <div class="container">
+            <div class="block heart" onclick="openHeart()">
+                <h2>Heart</h2>
+            </div>
+            <div class="block kidney" onclick="showForm('kidney')">
+                <h2>Kidney Disease</h2>
+            </div>
+            
+            <div class="block liver" onclick="openLiver()">
+                <h2>Liver</h2>
+            </div>
+            <div class="block more" onclick="showForm('more')">
+                <h2>More Diseases</h2>
+            </div>
+        </div>
+
+        
+
+        <script src="script.js"></script> <!-- Corrected filename -->
+    </body>
+    </html>
