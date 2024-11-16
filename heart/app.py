@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Load the model (ensure the path is correct)
-model_path = os.path.join(os.getcwd(), 'heart_disease_model.pkl')
+model_path = os.path.join(os.getcwd(), 'heart/heart_disease_model.pkl')
 
 # Ensure the model file exists
 if not os.path.exists(model_path):
@@ -51,6 +51,11 @@ def predict():
 
         # Render result page (heart_page2.html) and pass the result
         return render_template('heart_page2.html', result=result)
+
+# Route to display the doctors(GET request)
+@app.route('/doctors')
+def doctors():
+    return render_template('doctor_details.html')
 
 
 
