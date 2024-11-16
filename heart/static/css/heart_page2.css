@@ -1,0 +1,97 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top */
+    min-height: 100vh; /* Ensure the body takes at least 100% of the viewport height */
+    margin: 0;
+    position: relative;
+    overflow: hidden; /* Prevent scrolling on the body */
+}
+
+/* Background image styling */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6; /* Transparency for the background image */
+    z-index: -1; /* Place behind other content */
+}
+
+/* Styling for the container (form area) */
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Prevents it from growing too wide */
+    text-align: center; /* Center text */
+    box-sizing: border-box;  /* Include padding in the width calculation */
+    position: absolute; /* Fix container position */
+    top: 100px; /* Fixed 100px from the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Correct horizontal alignment */
+    max-height: 80vh; /* Adjust container height to 80% of the viewport height */
+    overflow-y: auto; /* Enables scrolling inside the container */
+}
+
+/* Styling for heading */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333; /* Dark color for better contrast */
+}
+
+/* Styling for the submit button */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for result message */
+#result h2 {
+    color: green;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 0.85em;
+    display: none; /* Initially hidden */
+}
+
+/* Input field styling */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
