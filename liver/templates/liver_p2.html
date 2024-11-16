@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heart Disease Predictor - Result</title>
-    <link rel="stylesheet" href="liver_p2.css">
+    <title>Liver Disease Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/liver_p2.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Liver Disease Probability Detector</h1>
-        <div id="result"></div>
-        <button onclick="consultDoc()">Consult a Doctor</button><br><br>
-        <button onclick="goBack()">Re-Diagnose</button>
+        <h1>Liver Disease Prediction Result</h1>
+        <p><strong>Prediction: </strong>{{ prediction }}</p>
+        <!-- Button to go back to the input form -->
+        <button onclick="window.location.href='/'">Go Back to the Input Form</button><br><br>
+        <button onclick="window.location.href='/doctors'">Consult a Doctor</button>
+        
     </div>
-
-    <script src="liver_p2.js"></script>
 </body>
 </html>

@@ -4,61 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liver Disease Predictor - Step 1</title>
-    <link rel="stylesheet" href="liver_p1.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/liver_p1.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Liver Disease Probability Detector</h1>
+        <!-- Remove the action and method attributes from the form -->
         <form id="liver-disease-form">
             <label>Age:</label>
-            <input type="number" id="age" required>
-            <span id="age-error" style="color: red; display: none;">Please enter a valid age.</span><br>
-
+            <input type="number" id="age" required min="1" max="120">
+            
             <label>Gender:</label>
             <select id="gender" required>
                 <option value="" disabled selected>Select gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-                <option value="other">Other</option>
             </select>
-            <span id="gender-error" style="color: red; display: none;">Please select a valid gender.</span><br>
-
+            
             <label>Total Bilirubin Value:</label>
             <input type="number" id="tot_bilirubin" required>
-            <span id="tot-bilirubin-error" style="color: red; display: none;">Please enter a valid total bilirubin value.</span><br>
-
+            
             <label>Direct Bilirubin Value:</label>
             <input type="number" id="direct_bilirubin" required>
-            <span id="direct-bilirubin-error" style="color: red; display: none;">Please enter a valid direct bilirubin value.</span><br>
-
+            
             <label>Total Proteins Value:</label>
             <input type="number" id="tot_proteins" required>
-            <span id="tot-proteins-error" style="color: red; display: none;">Please enter a valid total proteins value.</span><br>
-
+            
             <label>Albumin Value:</label>
             <input type="number" id="albumin" required>
-            <span id="albumin-error" style="color: red; display: none;">Please enter a valid albumin value.</span><br>
-
+            
             <label>AG Ratio:</label>
             <input type="number" id="ag_ratio" required>
-            <span id="ag-ratio-error" style="color: red; display: none;">Please enter a valid A/G ratio.</span><br>
-
+            
             <label>SGPT Value:</label>
             <input type="number" id="sgpt" required>
-            <span id="sgpt-error" style="color: red; display: none;">Please enter a valid SGPT value.</span><br>
-
+            
             <label>SGOT Value:</label>
             <input type="number" id="sgot" required>
-            <span id="sgot-error" style="color: red; display: none;">Please enter a valid SGOT value.</span><br>
-
+            
             <label>Alkphos Value:</label>
             <input type="number" id="alkphos" required>
-            <span id="alkphos-error" style="color: red; display: none;">Please enter a valid Alkphos value.</span><br>
-
+            
             <button type="submit">Submit</button>
         </form>
     </div>
 
-    <script src="liver_p1.js"></script>
+    <!-- Link the correct JS file from the static folder -->
+    <script src="{{ url_for('static', filename='js/liver_p1.js') }}"></script>
 </body>
 </html>
