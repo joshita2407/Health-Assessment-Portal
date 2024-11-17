@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import pickle
 import os
 
@@ -21,8 +21,8 @@ def heart_form():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    if request.method == 'POST':
-        # Extract input data from the form
+    try:
+        # Extract input data from the form with validation
         age = int(request.form['age'])
         sex = 0 if request.form['sex'] == 'male' else 1
         chest_pain = int(request.form['chestPain'])
@@ -44,21 +44,27 @@ def predict():
             st_depression, slope_of_st, num_vessels_fluro, thallium
         ]]
 
+        # Make prediction
         prediction = model.predict(input_data)
         print(f"Prediction: {prediction[0]}")  # Debugging line
         result = "Positive for Heart Disease" if prediction[0] == 1 else "Negative for Heart Disease"
 
-
         # Render result page (heart_page2.html) and pass the result
         return render_template('heart_page2.html', result=result)
 
+    except Exception as e:
+        print(f"Error during prediction: {e}")
+        return redirect(url_for('heart_form'))  # Redirect back to form in case of error
+
 # Route to display the doctors(GET request)
+@app.route('/status')
+def status():
+    return "Heart App is Running!"
+
 @app.route('/doctors')
 def doctors():
     return render_template('doctor_details.html')
 
-
-
 if __name__ == '__main__':
     # Start the Flask app in debug mode
-    app.run(debug=True)
+    app.run(host="127.0.0.1", port=5001, threaded=True)

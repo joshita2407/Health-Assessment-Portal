@@ -7,7 +7,6 @@ app = Flask(__name__)
 # Global variable to hold the model
 model = None
 
-print(os.getcwd())
 # Load the model when the application starts
 def load_model():
     global model
@@ -17,12 +16,12 @@ def load_model():
 
         # Check if the model file exists
         if not os.path.exists(model_path):
-            print(f"Model file not found at: {model_path}")
-        else:
-            # Load the model using pickle
-            with open(model_path, 'rb') as model_file:
-                model = pickle.load(model_file)
-                print("Model loaded successfully!")
+            raise FileNotFoundError(f"Model file not found at {model_path}")
+        
+        # Load the model using pickle
+        with open(model_path, 'rb') as model_file:
+            model = pickle.load(model_file)
+            print("Model loaded successfully!")
     except Exception as e:
         print(f"Error loading model with pickle: {str(e)}")
         model = None  # Set model to None if loading fails
@@ -37,7 +36,7 @@ def predict_liver_disease(age, gender, tot_bilirubin, direct_bilirubin, tot_prot
         if model is None:
             return "Error in prediction: Model not loaded!"
         
-        # One-hot encoding for gender
+        # One-hot encoding for gender (male: 0, female: 1)
         gender_encoded = [1, 0] if gender == 'male' else [0, 1]  # One-hot encoding for male/female
         
         # Prepare the input data in the same format as the training data
@@ -66,16 +65,27 @@ def predict():
     try:
         # Parse the form data sent from the frontend (ensure JSON payload)
         data = request.get_json()  # Using get_json() for incoming JSON data
-        age = float(data.get('age'))
-        gender = data.get('gender')
-        tot_bilirubin = float(data.get('tot_bilirubin'))
-        direct_bilirubin = float(data.get('direct_bilirubin'))
-        tot_proteins = float(data.get('tot_proteins'))
-        albumin = float(data.get('albumin'))
-        ag_ratio = float(data.get('ag_ratio'))
-        sgpt = float(data.get('sgpt'))
-        sgot = float(data.get('sgot'))
-        alkphos = float(data.get('alkphos'))
+        if not data:
+            return jsonify({"error": "No input data provided"}), 400
+        
+        # Extract and validate the data from JSON
+        required_fields = ['age', 'gender', 'tot_bilirubin', 'direct_bilirubin', 'tot_proteins',
+                           'albumin', 'ag_ratio', 'sgpt', 'sgot', 'alkphos']
+        
+        for field in required_fields:
+            if field not in data:
+                return jsonify({"error": f"Missing field: {field}"}), 400
+        
+        age = float(data['age'])
+        gender = data['gender']
+        tot_bilirubin = float(data['tot_bilirubin'])
+        direct_bilirubin = float(data['direct_bilirubin'])
+        tot_proteins = float(data['tot_proteins'])
+        albumin = float(data['albumin'])
+        ag_ratio = float(data['ag_ratio'])
+        sgpt = float(data['sgpt'])
+        sgot = float(data['sgot'])
+        alkphos = float(data['alkphos'])
 
         # Call the prediction function and get the result
         prediction = predict_liver_disease(
@@ -101,4 +111,4 @@ def doctors():
     return render_template('doctor_details.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5002, threaded=True)
