@@ -1,97 +1,108 @@
-/* General body styling */
+/* General styling for the page */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0px; /* Consider reducing this for more visible form height */
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items at the top */
-    min-height: 100vh; /* Ensure the body takes at least 100% of the viewport height */
-    margin: 0;
-    position: relative;
-    overflow: hidden; /* Prevent scrolling on the body */
+    align-items: center;
+    min-height: 100vh; /* Use min-height to allow growth */
+    position: relative; /* Ensure positioning context for the background */
+    overflow: hidden; /* Prevent body from scrolling */
 }
 
-/* Background image styling */
 body::before {
     content: '';
-    position: absolute;
+    position: fixed; /* Keep background fixed */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-size: cover; /* Ensures the image covers the entire area */
+    background-image: url("/static/images/heart.jpeg");
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0.6; /* Transparency for the background image */
     z-index: -1; /* Place behind other content */
 }
 
-/* Styling for the container (form area) */
+/* Container for the form */
 .container {
-    background-color: white;
-    padding: 20px;
+    background-color: #ffffff;
+    padding: 30px; /* Increased padding for a more spacious feel */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* Prevents it from growing too wide */
-    text-align: center; /* Center text */
-    box-sizing: border-box;  /* Include padding in the width calculation */
-    position: absolute; /* Fix container position */
-    top: 100px; /* Fixed 100px from the top */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Correct horizontal alignment */
-    max-height: 80vh; /* Adjust container height to 80% of the viewport height */
-    overflow-y: auto; /* Enables scrolling inside the container */
+    max-width: 400px; /* Increased max-width for a larger form */
+    opacity: 1;
+    overflow-y: auto; /* Enable vertical scrolling for the form */
+    max-height: calc(100vh - 100px); /* Increased max-height to show more of the form */
+    text-align: center;
 }
 
-/* Styling for heading */
+/* Heading style */
 h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #333; /* Dark color for better contrast */
-}
-
-/* Styling for the submit button */
-button {
-    background-color: #007bff;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Styling for result message */
-#result h2 {
-    color: green;
+    text-align: center;
+    color: #333;
     font-size: 24px;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-/* Error message styling */
-.error {
-    color: red;
-    font-size: 0.85em;
-    display: none; /* Initially hidden */
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Input field styling */
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+/* Label styling */
+label {
     font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+    display: block;
 }
 
-input:focus, select:focus {
-    border-color: #007bff;
-    outline: none;
+/* Input fields styling */
+input[type="number"], select {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Ensure input field takes full width */
+    box-sizing: border-box;
+    color: #333;
+}
+
+/* Button styling */
+button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    label, input, select, button {
+        font-size: 14px;
+    }
 }
