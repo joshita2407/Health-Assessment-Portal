@@ -30,11 +30,12 @@ body::before {
 /* Container for the form */
 .container {
     background-color: #ffffff;
+    text-align: center;
     padding: 30px; /* Increased padding for a more spacious feel */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* Increased max-width for a larger form */
+    max-width: 350px; /* Increased max-width for a larger form */
     opacity: 1;
     overflow-y: auto; /* Enable vertical scrolling for the form */
     max-height: calc(100vh - 100px); /* Increased max-height to show more of the form */

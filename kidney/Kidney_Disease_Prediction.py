@@ -158,3 +158,10 @@ with open(export_path, 'wb') as file:
     pickle.dump(model, file)
 
 print(f"Model saved at {export_path}")
+
+# Save the scaler to a file
+scaler_path = 'kidney/scaler.pkl'
+with open(scaler_path, 'wb') as file:
+    pickle.dump(scaler, file)
+
+print(f"Scaler saved at {scaler_path}")

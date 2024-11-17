@@ -9,12 +9,12 @@
 <body>
     <div class="container">
         <h1>Kidney Disease Probability Detector</h1>
-        <form id="kidney-disease-form">
+        <form id="kidney-disease-form" action="/predict" method="POST">
             <label for="age">Age:</label>
             <input type="number" id="age" name="age" required min="1">
             
             <label for="bp">Blood Pressure:</label>
-            <input type="number" id="bp" name="bp" required>
+            <input type="number" id="bp" name="bp" required min="60">
             
             <label for="al">Albumin:</label>
             <input type="number" id="al" name="al" step="0.1" required>
@@ -55,6 +55,9 @@
             <label for="sc">Serum Creatinine:</label>
             <input type="number" id="sc" name="sc" step="0.1" required>
             
+            <label for="pot">Potassium:</label>
+            <input type="number" id="pot" name="pot" required>
+
             <label for="wc">White Blood Cells Count:</label>
             <input type="number" id="wc" name="wc" required>
             

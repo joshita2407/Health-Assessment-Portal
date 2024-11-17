@@ -17,9 +17,8 @@
         }
 
         // Define Kidney function if needed
-        function showForm(category) {
-            alert('Form for ' + category + ' category');
-            // Add the code here to display the form for kidney disease or any other functionality
+        function openKidney() {
+            window.location.href = "/kidney";  // This links to the Flask route for kidney
         }
     </script>
 </head>
@@ -33,7 +32,7 @@
         <div class="block heart" onclick="openHeart()">
             <h2>Heart</h2>
         </div>
-        <div class="block kidney" onclick="showForm('kidney')">
+        <div class="block kidney" onclick="openKidney('kidney')">
             <h2>Kidney Disease</h2>
         </div>
 
