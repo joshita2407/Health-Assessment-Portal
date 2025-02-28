@@ -1,7 +1,3 @@
-Here's a well-structured and visually appealing **README.md** file for your **Health Assessment Portal** project. It includes clear sections, emojis, and markdown formatting to make it engaging and easy to navigate.  
-
----
-
 ### **🩺 Health Assessment Portal**  
 🚀 **Predict & Prevent – Your AI-Powered Health Companion**  
 
