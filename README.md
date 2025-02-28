@@ -79,7 +79,3 @@ We welcome contributions! Feel free to **fork** the repository, submit **pull re
 🔗 LinkedIn: [www.linkedin.com/in/joshita-gupta](https://www.linkedin.com/in/joshita-gupta/)
 
 🌐 GitHub: [github.com/joshita2407](https://github.com/joshita2407)
-
----
-
-Let me know if you'd like any modifications! 🚀😊
